@@ -1,0 +1,12 @@
+{
+    "name": "symch/configcomposer",
+    "description": "Fichier de config",
+    "require": {
+        "michelf/php-markdown": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Symch\\Configcomposer\\": "src/"
+        }
+    }
+}
