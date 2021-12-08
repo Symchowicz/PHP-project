@@ -1,12 +1,18 @@
 {
-    "name": "symch/configcomposer",
-    "description": "Fichier de config",
+    "name": "maxen/config",
+    "description": "Une rapide config",
     "require": {
         "michelf/php-markdown": "^1.9"
     },
     "autoload": {
         "psr-4": {
-            "Symch\\Configcomposer\\": "src/"
+            "Maxen\\Config\\": "src/"
         }
-    }
+    },
+    "authors": [
+        {
+            "name": "PiKwaii93",
+            "email": "maxence.nho@hetic.net"
+        }
+    ]
 }
