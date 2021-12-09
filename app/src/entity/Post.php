@@ -1,84 +1,78 @@
-<?php 
+<?php
+
 namespace App\entity;
 
-class Post
-{
-    protected $post_id;
-    protected $date;
-    protected $title;
-    protected $content;
-    protected $user_id;
+class Post{
 
-    public function __construct($title, $content, $post_id, $user_id, $date){
+    private $date;
+    private string $title;
+    private string $content;
+    private int $user_id;
+
+    public function __construct($date, string $title, string $content, int $user_id)
+    {
+        $this->date = $date;
         $this->title = $title;
         $this->content = $content;
-        $this->post_id = $post_id;
         $this->user_id = $user_id;
-        $this->date = $date;
     }
 
 
-    // GET METHODS
-    public function getPostId()
-    {
-        return $this->post_id
-        ;
+    //Afficher//
+    public function afficheDate(){
+        echo($this->date);
+        echo("<br>");
     }
 
-    public function getDate()
-    {
-        return $this->date;
+    public function afficheTitle(){
+        echo($this->title);
+        echo("<br>");
     }
 
-    public function getTitle()
-    {
-        return $this->title;
+    public function afficheContent(){
+        echo($this->content);
+        echo("<br>");
+    }
+    public function afficheUser_Id(){
+        echo($this->user_id);
+        echo("<br>");
     }
 
-    public function getContent()
-    {
-        return $this->content;
+
+    //Getters//
+    public function getDate(){
+        return($this->date);
     }
 
-    public function getUserId()
-    {
-        return $this->userId;
+    public function getTitle(){
+        return($this->title);
     }
 
-    // SET METHODS
-    public function setDate(string $date)
-    {
-        $this->date = $date;
+    public function getContent(){
+        return($this->content);
+    }
+    public function getUser_Id(){
+        return($this->user_id);
     }
 
-    public function setTitle(string $title)
-    {
-        $this->title = $title;
+
+    //Setter//
+    public function setDate($newDate){
+        $this->date = $newDate;
+    }
+    public function setTitle($title){
+        $this->title = $newTitle;
+    }
+    public function setContent($newContent){
+        $this->content = $newContent;
     }
 
-    public function setContent(string $content)
-    {
-        $this->content = $content;
+    public function setUser_id($newUser_Id){
+        $this->user_id = $newUser_Id;
     }
+    
 
-    /* CRUD OPERATIONS
-    public function create(array $data)
-    {
 
-    }
-
-    public function read(int $id)
-    {
-
-    }
-
-    public function update(int $id, array $data)
-    {
-
-    }
-
-    public function delete(int $id)
-    {
-
-    } */
 }
+
+?>

@@ -1,36 +1,85 @@
 <?php
 
-namespace App\models\BaseManager;
+namespace App\models;
 
-require('App/src/config/factories.php');
-
-use App\Entity\Post;
+use App\entity\Post;
 use App\controllers\BaseController;
+
 
 class PostManager extends BaseManager
 {
 
+    
+    //Récupérer les infos//
+
+    public function RecupDate(){
+        $date = new \DateTime('NOW');
+
+        return $date;
+    }
+
+    public function RecupTitle(){
+        $title = $_POST['title'];
+
+        return $title;
+    }
+
+    public function RecupContent(){
+        $content = $_POST['content'];
+
+        return $content;
+    }
+
+    public function RecupUser_Id(){
+        $user_id = 1;
+
+        return $user_id;
+    }
+
+    //Limiter longueur du texte//
+    public function LimitText($text){
+        $text = mb_strimwidth($text, 0, 10, "...");
+    }
 
     /**
      * @return Post[]
      */
-    public function getAllPosts(): array
+    public function getAllPosts()
     {
-        $requete = $pdo->query("SELECT * FROM `CMS`.`posts_table`");
+        require("src/config/factories.php");   
+        $requete = $pdo->query("SELECT * FROM `CMS`.`posts_table` , `CMS`.`users_table` WHERE `posts_table`.`user_id`=1");
 
+        ?>
+        <div style="display:flex;flex-direction: column;">
+        <?php
+    
         while($data = $requete->fetch()){
-
-            echo($data["post_id"]);
-            echo("<br>");
-            echo($data["date"]);
-            echo("<br>");
-            echo($data["title"]);
-            echo("<br>");
-            echo($data["content"]);
-            echo("<br>");
-            echo($data["user_id"]);
-            echo("<br>");
+            ?>
+            <div style="margin:15px; border:3px solid black">
+                <?php
+                echo($data["post_id"]);
+                echo("<br>");
+                echo($data["date"]);
+                echo("<br>");
+                echo($data["title"]);
+                echo("<br>");
+                echo mb_strimwidth($data["content"], 0, 200, "...");
+                echo("<br>");
+                echo("<a href=''>Lire la suite</a>");
+                echo("<br>");
+                echo($data["user_id"]);
+                echo("<br>");
+                echo($data["first_name"]);
+                echo("<br>");
+                echo($data["last_name"]);
+                echo("<br>");
+                ?>
+            </div>
+            <?php
         }
+        ?>
+        </div>
+        <?php
     }
 
     public function getPostById(int $id): Post
@@ -58,16 +107,14 @@ class PostManager extends BaseManager
      */
     public function createPost(Post $post)
     {
-        $post_id= $post[0];
-        $date=$post[1];
-        $title=$post[2];
-        $content=$post[3];
-        $user_id=$post[4];
-
-        $sql = "INSERT INTO `posts_table` (`post_id`, `date`, `title`, `content`, `user_id`) VALUES ($post_id, $date, $title, $content, $user_id)";
-        $stmt= $pdo->prepare($sql);
-        $stmt->execute();
-
+        require("src/config/factories.php");   
+        $requete = $pdo->prepare("INSERT INTO `CMS`.`posts_table` (`post_id`, `date`, `title`, `content`, `user_id`) VALUES (NULL, NOW(), :title, :content, :user_id)");
+        $requete->execute( array(
+            'title' => $post->getTitle(),
+            'content' => $post->getContent(),
+            'user_id' => '1'
+            )
+        );
         return true;
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-require('App/src/config/factories.php');
+require("src/config/factories.php");   
 
 abstract class BaseManager
 {

@@ -13,38 +13,41 @@
                 </label>
                 <input type="text" id="content" name="content">
             </div>
-            <button>Post it</button>
+            <input type="submit" name="button1"class="button" value="Button1" />
         </form>
     </div>
-
-    <button>Créer</button>
-
-
-    <?php 
-
-        use App\entity\Post;
-        use App\models\BaseManager\PostManager;
-
-        $dsn = "mysql:host=db";
-        $user = "root";
-        $pwd = "example";
-        $pdo = new PDO($dsn, $user, $pwd);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        /* $title = $_POST['title'];
-        echo($title);
-        $content = $_POST['content'];
-
-        echo($content); */
-
-        $test = new Post("tite", "contenu", "post_id", "user_id", "date");
-
-        
+    
 
 
-        createPost($test);
+<?php 
 
-        getAllPosts();
+   require("src/config/factories.php");
+
+   use App\entity\Post;
+   use App\models\PostManager;
+
+    if(array_key_exists('button1', $_POST)) {
+        button1();
+    }
+
+    function button1() {
+        global $pdo;
+
+        $PostManager = new PostManager($pdo);
+
+        $date =$PostManager->RecupDate();
+        $title =$PostManager->RecupTitle();
+        $content =$PostManager->RecupContent();
+        $user_id =$PostManager->RecupUser_Id();
 
 
-    ?>
+        $stack = new Post($date, $title, $content, $user_id);
+
+        $PostManager->createPost($stack);
+    }
+
+    $PostManager2 = new PostManager($pdo);
+    $PostManager2->getAllPosts();
+
+
+?>
