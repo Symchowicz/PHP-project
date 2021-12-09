@@ -3,7 +3,7 @@
 ?>
 
 <h2>
-    Title Post
+    <?= //Get Title from Post ?>
 </h2>
 
 <div>
@@ -11,11 +11,11 @@
         <?php 
             /*
             --USER--
-            Title
-            Content
-            Date
-            First_Name
-            Last_Name
+            Title         SELECT title FROM posts_table WHERE posts_table.post_id = ID
+            Content       SELECT content FROM posts_table WHERE posts_table.post_id = ID
+            Date          SELECT date FROM posts_table WHERE posts_table.post_id = ID
+            First_Name    SELECT first_name FROM users_table WHERE user_table.user_id = ID
+            Last_Name     SELECT last FROM users_table WHERE user_table.user_id = ID
 
             --POST AUTHOR--
             Delete post
@@ -31,18 +31,42 @@
             <?php 
                     /*
                     --USER--
-                    Comments ammount
-                    Comment
+                    Comments ammount    SELECT COUNT(comment_id) FROM comments_table WHERE comment_table.post_id = ID
+                    Comment             SELECT content FROM comments_table WHERE comment_table.post_id = ID
 
                     --COMMENT AUTHOR--
-                    Delete comment
-                    Modify comment
+                    Delete comment  DELETE FROM comments_table WHERE comment_id = ID
+                    Modify comment  UPDATE FROM comments_table WHERE comment_id = ID
 
                     --ADMIN--
-                    Delete
-                    Modify
+                    Delete     DELETE FROM comments_table WHERE comment_id = ID
+                    Modify     UPDATE FROM comments_table WHERE comment_id = ID
                     */
             ?>
         </ul>
     </div>
+</div>
+
+<div>
+    <div>
+        <div>
+            <span><?= $post->getTitle() ?></span>
+            <div>
+                <span><?= $userManager->getUserById($post->getAuthorId())->getFirstName(); ?></span>
+                <span><?= date('\L\e\ d/M/Y \à\ H:i:s.', strtotime($post->getCreatedAt())) ?></span>
+            </div>
+        </div>
+
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash ms-2" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg>
+        </div>
+    </div>
+
+    <div><?= $post->getContent() ?></div>
 </div>
