@@ -9,7 +9,7 @@
             $this->render(
                 "404.php",
                 [],
-                "test"
+                "create_post"
             );
         }
     }

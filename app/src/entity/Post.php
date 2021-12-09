@@ -9,6 +9,15 @@ class Post
     protected $content;
     protected $user_id;
 
+    public function __construct($title, $content, $post_id, $user_id, $date){
+        $this->title = $title;
+        $this->content = $content;
+        $this->post_id = $post_id;
+        $this->user_id = $user_id;
+        $this->date = $date;
+    }
+
+
     // GET METHODS
     public function getPostId()
     {
