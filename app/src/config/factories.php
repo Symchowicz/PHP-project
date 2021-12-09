@@ -1,23 +1,3 @@
-<?php
- /*    $user = 'root';
-    $pass = 'example';
-    try {
-        $dbh = new PDO('mysql:host=db;dbname=CMS', $user, $pass);
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stock = $dbh->query("SELECT * FROM `CMS`.`users_table`");
-        print_r($stock);
-        $dbh = null;
-        echo("Miaou");
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        echo("WOUF");
-        die();
-    }
-
-    echo("FIN");
-    echo("<br>"); */
-?>
-
 
 <?php 
 
@@ -45,4 +25,8 @@ while($data = $requete->fetch()){
     echo("<br>");
 
 }
+
+/*
+INSERT INTO `users_table` (`users_id`, `first_name`, `last_name`, `email`, `is_admin`, `password`) VALUES (NULL, 'Maxence', 'Nho', 'max.elite.9394@gmail.com', '1', '123')
+*/
 ?>  
