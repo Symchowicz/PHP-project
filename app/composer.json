@@ -1,0 +1,18 @@
+{
+    "name": "symch/test",
+    "description": "test de mvc",
+    "require": {
+        "michelf/php-markdown": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Symch\\Test\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Symchowicz",
+            "email": "symchowiczbenji@gmail.com"
+        }
+    ]
+}
