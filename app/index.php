@@ -4,3 +4,4 @@
     require_once '../vendor/autoload.php';
     $router = new App\routes\Router() ;
     $router->getController();
+?>
