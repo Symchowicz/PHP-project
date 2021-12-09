@@ -1,18 +1,23 @@
 <?php
-    $user = 'root';
+ /*    $user = 'root';
     $pass = 'example';
     try {
         $dbh = new PDO('mysql:host=db;dbname=CMS', $user, $pass);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $dbh->query("SELECT * FROM users_table");
-        print_r($row);
+        $stock = $dbh->query("SELECT * FROM `CMS`.`users_table`");
+        print_r($stock);
         $dbh = null;
+        echo("Miaou");
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
-        echo("Miaou");
+        echo("WOUF");
         die();
     }
+
+    echo("FIN");
+    echo("<br>"); */
 ?>
+
 
 <?php 
 
@@ -22,16 +27,7 @@ $pwd = "example";
 $pdo = new PDO($dsn, $user, $pwd);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-
-/*echo("miaou");
-echo("<br>");
-
 $requete = $pdo->query("SELECT * FROM `CMS`.`users_table`");
-
-
-echo("miaou");
-echo("<br>");
 
 while($data = $requete->fetch()){
 
@@ -47,12 +43,6 @@ while($data = $requete->fetch()){
     echo("<br>");
     echo($data["password"]);
     echo("<br>");
-    echo("miaou");
-    echo("<br>");
 
 }
-
-echo("miaou");
-echo("<br>");*/
-
-?>
+?>  
