@@ -8,7 +8,7 @@ class Router
     public function getController()
     {
         $xml = new \DOMDocument();
-        $xml->load('routes.xml');
+        $xml->load('src/routes/routes.xml');
         $routes = $xml->getElementsByTagName('route');
 
         isset($_GET['p']) ? $path = htmlspecialchars($_GET['p']) : $path = "";

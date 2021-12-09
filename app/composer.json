@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Symch\\Test\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
