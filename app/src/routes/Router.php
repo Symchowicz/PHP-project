@@ -1,6 +1,9 @@
 <?php
 namespace App\routes;
+
+use App\controllers\FrontController;
 use App\controllers\ErrorController;
+
 use DOMDocument;
 
 class Router
@@ -15,7 +18,7 @@ class Router
 
         foreach ($routes as $route) { 
             if ($path === $route->getAttribute('p')) {
-                $controllerClass = 'Controller\\' . $route->getAttribute('controller');
+                $controllerClass = 'App\\controllers\\' . $route->getAttribute('controller');
                 $action = $route->getAttribute('action');
                 $params = [];
                 if ($route->hasAttribute('params')) {
