@@ -1,4 +1,3 @@
-
 <?php 
 
 $dsn = "mysql:host=db";
@@ -11,7 +10,7 @@ $requete = $pdo->query("SELECT * FROM `CMS`.`users_table`");
 
 while($data = $requete->fetch()){
 
-    echo($data["users_id"]);
+    echo($data["user_id"]);
     echo("<br>");
     echo($data["first_name"]);
     echo("<br>");

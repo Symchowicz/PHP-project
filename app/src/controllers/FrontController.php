@@ -3,7 +3,7 @@
     namespace App\controllers;
 
     use App\controllers\BaseController;
-    use Model\PostManager;
+    use App\models\PostManager;
 
     class FrontController extends BaseController
     {
