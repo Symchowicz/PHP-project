@@ -4,6 +4,7 @@
 
     use App\controllers\BaseController;
     use App\models\PostManager;
+    use App\config\PDOFactory;
 
     class FrontController extends BaseController
     {
@@ -15,17 +16,22 @@
 
         public function executePostList()
         {
-            echo("miaou");
-            $manager = new PostManager($pdo);
-            echo("grrr");
+            $manager = new PostManager(PDOFactory::getMysqlConnection());
             $data = $manager->getAllPosts();
-            echo("ouaf");
-            echo("<br>");
 
             /* echo($data); */
 
-            return $this->render('Page d\'accueil', $data, 'postList');
-            echo("bzzzz");
+            return $this->render('Liste des Posts', ['posts' => $data], 'postList');
+        }
+
+        public function executePostById()
+        {
+            $manager = new PostManager(PDOFactory::getMysqlConnection());
+            $data = $manager->getPostById(1);
+
+            /* echo($data); */
+
+            return $this->render('Post numéro 1', $data, 'post');
         }
 
         public function executeCreatePost()

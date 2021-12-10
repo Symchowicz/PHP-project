@@ -1,8 +1,9 @@
 <?php
  //SQL Posts 
- require("src/config/factories.php");
 
 ?>
+
+YOOOOOOOOOOOOOOOOOOO
 
 <h2>
     <?php //Get Title from Post ?>

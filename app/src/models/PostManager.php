@@ -46,38 +46,16 @@ class PostManager extends BaseManager
      */
     public function getAllPosts()
     {
-        require("src/config/factories.php");   
-        $requete = $pdo->query("SELECT * FROM `CMS`.`posts_table` , `CMS`.`users_table`");
-        $data =[];
-        while($index = $requete->fetch()){
-            array_push($data, $index);
-        }
-        return $data;
+        
+        $requete = $this->pdo->query("SELECT * FROM `CMS`.`posts_table`");
+        return $requete->fetchAll(\PDO::FETCH_CLASS, \App\entity\Post::class);
     }
 
     public function getPostById(int $id)
     {
-        require("src/config/factories.php"); 
+        $requete = $this->pdo->query("SELECT * FROM `CMS`.`posts_table` INNER JOIN `CMS`.`users_table` ON `posts_table`.`user_id` = `users_table`.`user_id` WHERE `posts_table`.`post_id` = $id");
+        return $requete->fetchAll(\PDO::FETCH_CLASS, \App\entity\Post::class);
 
-        $requete = $pdo->query("SELECT * FROM `CMS`.`posts_table` INNER JOIN `CMS`.`users_table` ON `posts_table`.`user_id` = `users_table`.`user_id` WHERE `posts_table`.`post_id` = 1");
-
-        while($data = $requete->fetch()){
-
-            echo($data["post_id"]);
-            echo("<br>");
-            echo($data["date"]);
-            echo("<br>");
-            echo($data["title"]);
-            echo("<br>");
-            echo($data["content"]);
-            echo("<br>");
-            echo($data["user_id"]);
-            echo("<br>");
-            echo($data["first_name"]);
-            echo("<br>");
-            echo($data["last_name"]);
-            echo("<br>");
-        }
     }
 
     /**

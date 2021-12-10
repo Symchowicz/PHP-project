@@ -2,9 +2,9 @@
 <routes>
     <!-- FrontEnd -->
     <route p="" controller="FrontController" action="index"/>
-    <route p="postList" controller="FrontController" action="postList"/>
-    <route p="createPost" controller="FrontController" action="createPost"/>
-    <route p="post" controller="FrontController" action="post" params="id"/>
+    <route p="post-list" controller="FrontController" action="postList"/>
+    <route p="create-post" controller="FrontController" action="createPost"/>
+    <route p="post" controller="FrontController" action="postById" params="id"/>
 
     <!-- Admin -->
     <route p="admin" controller="AdminController" action="index"/>

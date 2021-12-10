@@ -4,42 +4,19 @@ namespace App\entity;
 
 class Post{
 
+    private $post_id;
     private $date;
     private string $title;
     private string $content;
     private int $user_id;
 
-    public function __construct($date, string $title, string $content, int $user_id)
-    {
-        $this->date = $date;
-        $this->title = $title;
-        $this->content = $content;
-        $this->user_id = $user_id;
-    }
-
-
-    //Afficher//
-    public function afficheDate(){
-        echo($this->date);
-        echo("<br>");
-    }
-
-    public function afficheTitle(){
-        echo($this->title);
-        echo("<br>");
-    }
-
-    public function afficheContent(){
-        echo($this->content);
-        echo("<br>");
-    }
-    public function afficheUser_Id(){
-        echo($this->user_id);
-        echo("<br>");
-    }
 
 
     //Getters//
+    public function getPost_Id(){
+        return($this->post_id);
+    }
+
     public function getDate(){
         return($this->date);
     }
@@ -53,6 +30,11 @@ class Post{
     }
     public function getUser_Id(){
         return($this->user_id);
+    }
+
+    public function getAuthor(): User
+    {
+        return (new UserManager())->getUserById($this->user_id);
     }
 
 

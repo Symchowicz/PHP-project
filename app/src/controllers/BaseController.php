@@ -32,6 +32,12 @@ abstract class BaseController
     */
     public function render(string $title, array $vars, string $view)
     {
+
+        foreach($vars as $key => $value) {
+            ${$key} = $value;
+        }
+
+
     $view = $this->viewsDir . $view . '.php';
     ob_start();
     require $view;
