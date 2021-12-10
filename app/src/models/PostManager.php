@@ -11,9 +11,9 @@ class PostManager extends BaseManager
 
     
     //Récupérer les infos//
-
     public function RecupDate(){
         $date = new \DateTime('NOW');
+        $date = $date->format('Y-m-d');
 
         return $date;
     }
@@ -34,6 +34,13 @@ class PostManager extends BaseManager
         $user_id = 1;
 
         return $user_id;
+    }
+    public function SetInfosPost(Post $post, $PostManager){
+        $post->setDate($PostManager->RecupDate());
+        print_r($post->date);
+        $post->setTitle($PostManager->RecupTitle());
+        $post->setContent($PostManager->RecupContent());
+        $post->setUser_Id($PostManager->RecupUser_Id());
     }
 
     //Limiter longueur du texte//
@@ -63,13 +70,14 @@ class PostManager extends BaseManager
      * @return Post|bool
      */
     public function createPost(Post $post)
-    {
-        require("src/config/factories.php");   
-        $requete = $pdo->prepare("INSERT INTO `CMS`.`posts_table` (`post_id`, `date`, `title`, `content`, `user_id`) VALUES (NULL, NOW(), :title, :content, :user_id)");
+    {   
+
+        $requete = $this->pdo->prepare("INSERT INTO `CMS`.`posts_table` (`post_id`, `date`, `title`, `content`, `user_id`) VALUES (NULL, :date, :title, :content, :user_id)");
         $requete->execute( array(
+            'date' => $post->getDate(),
             'title' => $post->getTitle(),
             'content' => $post->getContent(),
-            'user_id' => '1'
+            'user_id' => $post->getUser_Id()
             )
         );
         return true;

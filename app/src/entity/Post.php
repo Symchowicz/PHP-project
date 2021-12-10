@@ -4,13 +4,11 @@ namespace App\entity;
 
 class Post{
 
-    private $post_id;
-    private $date;
-    private string $title;
-    private string $content;
-    private int $user_id;
-
-
+    public $post_id;
+    public $date;
+    public string $title;
+    public string $content;
+    public int $user_id;
 
     //Getters//
     public function getPost_Id(){
@@ -39,10 +37,13 @@ class Post{
 
 
     //Setter//
+    public function setPost_Id($newPost_Id){
+        $this->post_id = $newPost_Id;
+    }
     public function setDate($newDate){
         $this->date = $newDate;
     }
-    public function setTitle($title){
+    public function setTitle($newTitle){
         $this->title = $newTitle;
     }
     public function setContent($newContent){

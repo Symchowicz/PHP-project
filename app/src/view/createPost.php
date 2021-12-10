@@ -20,11 +20,9 @@
 
 
 <?php 
-
-   require("src/config/factories.php");
-
    use App\entity\Post;
    use App\models\PostManager;
+   use App\config\PDOFactory;
 
     if(array_key_exists('button1', $_POST)) {
         button1();
@@ -33,17 +31,18 @@
     function button1() {
         global $pdo;
 
-        $PostManager = new PostManager($pdo);
+        $PostManager = new PostManager(PDOFactory::getMysqlConnection());
 
-        $date =$PostManager->RecupDate();
-        $title =$PostManager->RecupTitle();
-        $content =$PostManager->RecupContent();
-        $user_id =$PostManager->RecupUser_Id();
+        echo("miaou");
+        echo("<br>");
 
+        $stack2= new Post($date);
 
-        $stack = new Post($date, $title, $content, $user_id);
+        $PostManager->SetInfosPost($stack2, $PostManager);
+        print_r($stack2);
 
-        $PostManager->createPost($stack);
+        $PostManager->createPost($stack2);
+
     }
 
 ?>

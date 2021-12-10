@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-require("src/config/factories.php");   
+use App\config\PDOFactory; 
 
 abstract class BaseManager
 {
