@@ -47,44 +47,19 @@ class PostManager extends BaseManager
     public function getAllPosts()
     {
         require("src/config/factories.php");   
-        $requete = $pdo->query("SELECT * FROM `CMS`.`posts_table` , `CMS`.`users_table` WHERE `posts_table`.`user_id`=1");
-
-        ?>
-        <div style="display:flex;flex-direction: column;">
-        <?php
-    
-        while($data = $requete->fetch()){
-            ?>
-            <div style="margin:15px; border:3px solid black">
-                <?php
-                echo($data["post_id"]);
-                echo("<br>");
-                echo($data["date"]);
-                echo("<br>");
-                echo($data["title"]);
-                echo("<br>");
-                echo mb_strimwidth($data["content"], 0, 200, "...");
-                echo("<br>");
-                echo("<a href=''>Lire la suite</a>");
-                echo("<br>");
-                echo($data["user_id"]);
-                echo("<br>");
-                echo($data["first_name"]);
-                echo("<br>");
-                echo($data["last_name"]);
-                echo("<br>");
-                ?>
-            </div>
-            <?php
+        $requete = $pdo->query("SELECT * FROM `CMS`.`posts_table` , `CMS`.`users_table`");
+        $data =[];
+        while($index = $requete->fetch()){
+            array_push($data, $index);
         }
-        ?>
-        </div>
-        <?php
+        return $data;
     }
 
-    public function getPostById(int $id): Post
+    public function getPostById(int $id)
     {
-        $requete = $pdo->query("SELECT * FROM users_table, posts_table WHERE post_id = $id");
+        require("src/config/factories.php"); 
+
+        $requete = $pdo->query("SELECT * FROM `CMS`.`posts_table` INNER JOIN `CMS`.`users_table` ON `posts_table`.`user_id` = `users_table`.`user_id` WHERE `posts_table`.`post_id` = 1");
 
         while($data = $requete->fetch()){
 
@@ -97,6 +72,10 @@ class PostManager extends BaseManager
             echo($data["content"]);
             echo("<br>");
             echo($data["user_id"]);
+            echo("<br>");
+            echo($data["first_name"]);
+            echo("<br>");
+            echo($data["last_name"]);
             echo("<br>");
         }
     }
@@ -124,15 +103,17 @@ class PostManager extends BaseManager
      */
     public function updatePost(Post $post)
     {
-        $post_id= $post[0];
-        $date=$post[1];
-        $title=$post[2];
-        $content=$post[3];
-        $user_id=$post[4];
 
-        $sql = "UPDATE `posts_table` SET  `date` = $date, `title` = $title, `content` = $content, `user_id` = $user_id WHERE `posts_table`.`post_id` = $post_id";
+        $sql = "UPDATE `posts_table` SET  `date` = :date, `title` = :title, `content` = :content WHERE `posts_table`.`post_id` = :post_id";
         $stmt= $pdo->prepare($sql);
-        $stmt->execute();
+        $stmt->execute( array(
+            'date' => $post->getDate(),
+            'title' => $post->getTitle(),
+            'content' => $post->getContent(),
+            //`post_id` => Get ID from Actual Post
+            )
+        );
+        return true;
     }
 
     /**
@@ -141,7 +122,7 @@ class PostManager extends BaseManager
      */
     public function deletePostById(int $id): bool
     {
-        $sql = "DELETE FROM `posts_table` WHERE `posts_table`.`post_id` = $post_id";
+        $sql = "DELETE FROM `posts_table` WHERE `posts_table`.`post_id` = $id";
         $stmt= $pdo->prepare($sql);
         $stmt->execute();
     }

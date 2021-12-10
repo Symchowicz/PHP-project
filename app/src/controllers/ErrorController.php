@@ -9,7 +9,7 @@
             $this->render(
                 "404.php",
                 [],
-                "create_post"
+                "404"
             );
         }
     }

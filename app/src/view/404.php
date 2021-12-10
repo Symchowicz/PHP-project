@@ -12,6 +12,6 @@
     </head>
 
     <body>
-        <div>DANS TON CUL</div>
+        <div>Wrong page :'(</div>
     </body>
 </html>

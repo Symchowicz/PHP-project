@@ -7,12 +7,32 @@
 
     class FrontController extends BaseController
     {
-        public function executeIndex(int $number = 5)
+        public function executeIndex()
         {
-            $manager = new PostManager();
-            $index = $manager->getPosts($number);
+            echo("c'est l'index");
+            
+        }
 
-            return $this->render('Page d\'accueil', $index, 'Frontend/index');
+        public function executePostList()
+        {
+            echo("miaou");
+            $manager = new PostManager($pdo);
+            echo("grrr");
+            $data = $manager->getAllPosts();
+            echo("ouaf");
+            echo("<br>");
+
+            /* echo($data); */
+
+            return $this->render('Page d\'accueil', $data, 'postList');
+            echo("bzzzz");
+        }
+
+        public function executeCreatePost()
+        {
+
+            return $this->render('Page d\'accueil', [], 'createPost');
+
         }
 
         public function executeShow()
