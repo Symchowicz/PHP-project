@@ -27,11 +27,12 @@
         public function executePostById()
         {
             $manager = new PostManager(PDOFactory::getMysqlConnection());
-            $data = $manager->getPostById(1);
+            $id = $this->params["id"];
+            $data = $manager->getPostById($id);
 
             /* echo($data); */
 
-            return $this->render('Post numéro 1', $data, 'post');
+            return $this->render("'Post numéro'+$id", ['posts' => $data], 'post');
         }
 
         public function executeCreatePost()

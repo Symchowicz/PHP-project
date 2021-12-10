@@ -13,6 +13,10 @@
                 </label>
                 <input type="text" id="content" name="content">
             </div>
+            <div>
+                Vous pouvez choisir une image<br>
+                <input type="file" name="image" size="40">
+            </div>
             <input type="submit" name="button1"class="button" value="Button1" />
         </form>
     </div>
@@ -32,15 +36,9 @@
         global $pdo;
 
         $PostManager = new PostManager(PDOFactory::getMysqlConnection());
-
-        echo("miaou");
-        echo("<br>");
-
         $stack2= new Post($date);
 
         $PostManager->SetInfosPost($stack2, $PostManager);
-        print_r($stack2);
-
         $PostManager->createPost($stack2);
 
     }

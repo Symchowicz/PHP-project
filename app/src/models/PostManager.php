@@ -35,12 +35,20 @@ class PostManager extends BaseManager
 
         return $user_id;
     }
+
+    public function RecupImage(){
+        $image = $_FILES['image'];
+
+        return $image;
+    }
+
     public function SetInfosPost(Post $post, $PostManager){
         $post->setDate($PostManager->RecupDate());
         print_r($post->date);
         $post->setTitle($PostManager->RecupTitle());
         $post->setContent($PostManager->RecupContent());
         $post->setUser_Id($PostManager->RecupUser_Id());
+        $post->setImage($PostManager->RecupImage());
     }
 
     //Limiter longueur du texte//

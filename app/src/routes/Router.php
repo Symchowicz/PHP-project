@@ -23,11 +23,9 @@ class Router
                 $params = [];
                 if ($route->hasAttribute('params')) {
                     $keys = explode(',',$route->getAttribute('params'));
+                    
                     foreach($keys as $key) {
-                        echo($key);
-                        $params[$keys] = $_GET[$keys];
-                        echo($params[$keys]);
-                        echo($_GET[$keys]);
+                        $params[$key] = $_GET[$key];
                     }
                 }
                 return new $controllerClass($action, $params);

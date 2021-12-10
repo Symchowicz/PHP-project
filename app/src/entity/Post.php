@@ -8,7 +8,9 @@ class Post{
     public $date;
     public string $title;
     public string $content;
+    public $image;
     public int $user_id;
+
 
     //Getters//
     public function getPost_Id(){
@@ -30,6 +32,10 @@ class Post{
         return($this->user_id);
     }
 
+    public function getImage(){
+        return($this->image);
+    }
+
     public function getAuthor(): User
     {
         return (new UserManager())->getUserById($this->user_id);
@@ -49,9 +55,11 @@ class Post{
     public function setContent($newContent){
         $this->content = $newContent;
     }
-
     public function setUser_id($newUser_Id){
         $this->user_id = $newUser_Id;
+    }
+    public function setImage($newImage){
+        $this->image = $newImage;
     }
     
 
