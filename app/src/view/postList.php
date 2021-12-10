@@ -8,6 +8,10 @@
     Posts List
 </h2>
 
+<h3>
+    Création de post : /create-post
+</h3>
+
 <div>
     <ul>
         <?php 

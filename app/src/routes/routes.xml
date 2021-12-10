@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
     <!-- FrontEnd -->
-<<<<<<< Updated upstream
-    <route p="" controller="FrontController" action="login"/>
-=======
-    <!-- <route p="" controller="FrontController" action="index"/> -->
->>>>>>> Stashed changes
-    <route p="post-list" controller="FrontController" action="postList"/>
+    <route p="" controller="FrontController" action="postList"/>
     <route p="create-post" controller="FrontController" action="createPost"/>
     <route p="post" controller="FrontController" action="postById" params="id"/>
 
@@ -19,8 +14,7 @@
     <route p="update-article" controller="AdminController" action="updatePost" params="id"/>
     <route p="userlist" controller="AdminController" action="userlist"/>
     <!-- Security -->
-    <route p="" controller="SecurityController" action="login"/>
-    <route p="post-list-co" controller="SecurityController" action="Bdd"/>
+    <route p="login" controller="SecurityController" action="login"/>
     <route p="logout" controller="SecurityController" action="logout"/>
     <route p="signup" controller="SecurityController" action="signup"/>
     <route p="update-user" controller="SecurityController" action="updateUser" params="id"/>
