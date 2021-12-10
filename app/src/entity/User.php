@@ -3,12 +3,12 @@
 namespace App\entity;
 
 class User{
-    private int $user_id;
-    private string $first_name;
-    private string $last_name;
-    private string $email;
-    private bool $is_admin;
-    private string $password;
+    public int $user_id;
+    public string $first_name;
+    public string $last_name;
+    public string $email;
+    public bool $is_admin;
+    public string $password;
 
      //Getters//
      public function getUser_Id(){

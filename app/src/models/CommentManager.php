@@ -59,7 +59,7 @@ class CommentManager extends BaseManager
      */
     public function deleteCommentById(int $id): bool
     {
-        $sql = "DELETE FROM `comments_table` WHERE `comments_table`.`Comment_id` = $id";
+        $sql = "DELETE FROM `comments_table` WHERE `comments_table`.`comment_id` = $id";
         $stmt= $this->$pdo->prepare($sql);
         $stmt->execute();
 

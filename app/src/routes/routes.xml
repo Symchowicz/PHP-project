@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
     <!-- FrontEnd -->
-    <route p="" controller="FrontController" action="index"/>
+    <route p="" controller="FrontController" action="login"/>
     <route p="post-list" controller="FrontController" action="postList"/>
     <route p="create-post" controller="FrontController" action="createPost"/>
     <route p="post" controller="FrontController" action="postById" params="id"/>

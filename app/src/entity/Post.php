@@ -4,6 +4,7 @@ namespace App\entity;
 
 use App\entity\User;
 use App\models\UserManager;
+use App\config\PDOFactory;
 
 class Post{
 
@@ -37,15 +38,6 @@ class Post{
 
     public function getImage(){
         return($this->image);
-    }
-
-    public function getAuthor()
-    {
-        $utilisateur = new UserManager();
-
-        $utilisateur->getUserById(1);
-        
-        return "haha";
     }
 
 
