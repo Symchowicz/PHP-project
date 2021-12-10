@@ -27,6 +27,8 @@ foreach ($posts as $post) {
             echo("<br>");
             echo($post->getUser_Id());
             echo("<br>");
+            echo($post->getAuthor());
+            echo("<br>");
             /*echo($post->getFirstName());
             echo("<br>");
             echo($post->getLastName());
@@ -40,52 +42,31 @@ foreach ($posts as $post) {
     <?php
 }
 
-?>
-
-
-
-<div>
-    <div>
-        <?php 
-
-
-
-            /*
-            --USER--
-            Title         SELECT title FROM posts_table WHERE posts_table.post_id = ID
-            Content       SELECT content FROM posts_table WHERE posts_table.post_id = ID
-            Date          SELECT date FROM posts_table WHERE posts_table.post_id = ID
-            First_Name    SELECT first_name FROM users_table WHERE user_table.user_id = ID
-            Last_Name     SELECT last FROM users_table WHERE user_table.user_id = ID
-
-            --POST AUTHOR--
-            Delete post
-            Modify post
-            --ADMIN--
-            Delete
-            Modify
-            */
-        ?>
-    </div>
-    <div>
-        <ul>
-            <?php 
-                    /*
-                    --USER--
-                    Comments ammount    SELECT COUNT(comment_id) FROM comments_table WHERE comment_table.post_id = ID
-                    Comment             SELECT content FROM comments_table WHERE comment_table.post_id = ID
-
-                    --COMMENT AUTHOR--
-                    Delete comment  DELETE FROM comments_table WHERE comment_id = ID
-                    Modify comment  UPDATE FROM comments_table WHERE comment_id = ID
-
-                    --ADMIN--
-                    Delete     DELETE FROM comments_table WHERE comment_id = ID
-                    Modify     UPDATE FROM comments_table WHERE comment_id = ID
-                    */
+foreach ($comments as $comment) {
+    ?>
+    <div style="margin:15px; border:3px solid black">
+        <?php
+            echo($comment->getComment_Id());
+            echo("<br>");
+            echo($comment->getDate());
+            echo("<br>");
+            echo($comment->getUser_Id());
+            echo("<br>");
+            echo($comment->getContent());
+            echo("<br>");
+            echo($comment->getPost_Id());
+            echo("<br>");
+            /*echo($comment->getFirstName());
+            echo("<br>");
+            echo($comment->getLastName());
+            echo("<br>");*/
             ?>
-        </ul>
+            <div>
+                <input type="submit" name="Supprimer" class="button" value="Supprimer" />
+                <input type="submit" name="Modifier" class="button" value="Modifier" />
+            </div>
     </div>
-</div>
+    <?php
+}
 
-
+?>

@@ -4,6 +4,8 @@
 
     use App\controllers\BaseController;
     use App\models\PostManager;
+    use App\models\CommentManager;
+    use App\models\UserManager;
     use App\config\PDOFactory;
 
     class FrontController extends BaseController
@@ -19,20 +21,20 @@
             $manager = new PostManager(PDOFactory::getMysqlConnection());
             $data = $manager->getAllPosts();
 
-            /* echo($data); */
-
             return $this->render('Liste des Posts', ['posts' => $data], 'postList');
         }
 
         public function executePostById()
         {
-            $manager = new PostManager(PDOFactory::getMysqlConnection());
+            $manager1= new PostManager(PDOFactory::getMysqlConnection());
+            $manager2= new CommentManager(PDOFactory::getMysqlConnection());
+            $manager3= new UserManager(PDOFactory::getMysqlConnection());
             $id = $this->params["id"];
-            $data = $manager->getPostById($id);
+            $data1 = $manager1->getPostById($id);
+            $data2 = $manager2->getCommentById($id);
+            //$data3 = $manager3->getUserByPostId($id);
 
-            /* echo($data); */
-
-            return $this->render("'Post numéro'+$id", ['posts' => $data], 'post');
+            return $this->render("'Post numéro'+$id", ['posts' => $data1, 'comments' => $data2, 'userPost' => $data3], 'post');
         }
 
         public function executeCreatePost()

@@ -44,11 +44,9 @@ class PostManager extends BaseManager
 
     public function SetInfosPost(Post $post, $PostManager){
         $post->setDate($PostManager->RecupDate());
-        print_r($post->date);
         $post->setTitle($PostManager->RecupTitle());
         $post->setContent($PostManager->RecupContent());
         $post->setUser_Id($PostManager->RecupUser_Id());
-        $post->setImage($PostManager->RecupImage());
     }
 
     //Limiter longueur du texte//
@@ -77,7 +75,7 @@ class PostManager extends BaseManager
      * @param Post $post
      * @return Post|bool
      */
-    public function createPost(Post $post)
+    public function createPost(Post $post): bool
     {   
 
         $requete = $this->pdo->prepare("INSERT INTO `CMS`.`posts_table` (`post_id`, `date`, `title`, `content`, `user_id`) VALUES (NULL, :date, :title, :content, :user_id)");
@@ -95,11 +93,11 @@ class PostManager extends BaseManager
      * @param Post $post
      * @return Post|bool
      */
-    public function updatePost(Post $post)
+    public function updatePost(Post $post) : bool 
     {
 
         $sql = "UPDATE `posts_table` SET  `date` = :date, `title` = :title, `content` = :content WHERE `posts_table`.`post_id` = :post_id";
-        $stmt= $pdo->prepare($sql);
+        $stmt= $this->pdo->prepare($sql);
         $stmt->execute( array(
             'date' => $post->getDate(),
             'title' => $post->getTitle(),
@@ -117,7 +115,9 @@ class PostManager extends BaseManager
     public function deletePostById(int $id): bool
     {
         $sql = "DELETE FROM `posts_table` WHERE `posts_table`.`post_id` = $id";
-        $stmt= $pdo->prepare($sql);
+        $stmt= $this->$pdo->prepare($sql);
         $stmt->execute();
+
+        return true;
     }
 }

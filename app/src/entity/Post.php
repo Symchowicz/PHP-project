@@ -2,6 +2,9 @@
 
 namespace App\entity;
 
+use App\entity\User;
+use App\models\UserManager;
+
 class Post{
 
     public $post_id;
@@ -36,9 +39,13 @@ class Post{
         return($this->image);
     }
 
-    public function getAuthor(): User
+    public function getAuthor()
     {
-        return (new UserManager())->getUserById($this->user_id);
+        $utilisateur = new UserManager();
+
+        $utilisateur->getUserById(1);
+        
+        return "haha";
     }
 
 

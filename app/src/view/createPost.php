@@ -36,8 +36,9 @@
         global $pdo;
 
         $PostManager = new PostManager(PDOFactory::getMysqlConnection());
-        $stack2= new Post($date);
+        $stack2= new Post();
 
+        
         $PostManager->SetInfosPost($stack2, $PostManager);
         $PostManager->createPost($stack2);
 

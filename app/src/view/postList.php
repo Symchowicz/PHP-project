@@ -28,8 +28,8 @@
                         echo("<br>");
                         echo('<a href="/post/' . $post->getPost_Id() . '">Lire la suite</a>');
                         echo("<br>");
-                        echo($post->getImage());
-                        echo("<br>");
+                        /*echo($post->getImage());
+                        echo("<br>");*/
                         echo($post->getUser_Id());
                         echo("<br>");
                         /*echo($post->getFirstName());

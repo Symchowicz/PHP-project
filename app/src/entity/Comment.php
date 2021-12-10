@@ -13,7 +13,7 @@ class Comment{
 
 
     //Getters//
-    public function getComment_id(){
+    public function getComment_Id(){
         return($this->comment_id);
     }
 
@@ -36,6 +36,7 @@ class Comment{
     {
         return (new UserManager())->getUserById($this->user_id);
     }
+    
 
 
     //Setter//
