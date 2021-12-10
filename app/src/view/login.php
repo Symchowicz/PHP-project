@@ -1,7 +1,11 @@
+<?php 
+ print_r($users)
+?>
+
 <div style="display:flex;">
     <div>
         <h1>Login</h1>
-        <form method="post">
+        <form method="post" action="post-list-co">
             <div>
                 <label for="email">
                     Email :
@@ -20,7 +24,7 @@
 
     <div>
         <h1>Register</h1>
-        <form method="post">
+        <form method="post" action="post-list-co">
             <div>
                 <label for="firstName">
                     First Name :

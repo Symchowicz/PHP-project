@@ -1,5 +1,7 @@
 <?php
  //SQL Posts List
+
+    echo 'email : '.$_POST["email"].'<br>';
 ?>
 
 <h2>

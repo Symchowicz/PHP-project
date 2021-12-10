@@ -2,7 +2,11 @@
 
 namespace App\models;
 
+<<<<<<< Updated upstream
 use App\entity\User;
+=======
+use App\entity\Post;
+>>>>>>> Stashed changes
 use App\controllers\BaseController;
 
 
@@ -46,9 +50,12 @@ class UserManager extends BaseManager
         return $password;
     }
 
+<<<<<<< Updated upstream
     /**
      * @return User[]
      */
+=======
+>>>>>>> Stashed changes
     public function getAllUsers()
     {
         
@@ -56,6 +63,7 @@ class UserManager extends BaseManager
         return $requete->fetchAll(\PDO::FETCH_CLASS, \App\entity\User::class);
     }
 
+<<<<<<< Updated upstream
     public function getUserById(int $id)
     {
         $requete = $this->pdo->query("SELECT * FROM `CMS`.`users_table` WHERE `users_table`.`user_id` = $id");
@@ -125,6 +133,20 @@ class UserManager extends BaseManager
         $stmt->execute();
 
         return true;
+=======
+    public function setBdd()
+    {
+        $first_name = $_POST["firstName"];
+        $last_name = $_POST["lastName"];
+        $email = $_POST["email"];
+        $is_admin = $_POST["is_admin"];
+        $password = $_POST["password"];
+
+        $requete = $this->pdo->query(
+            "INSERT INTO`CMS`.`users_table` (first_name, last_name,email, is_admin, password)
+        VALUES ($first_name, $last_name, $email,$is_admin,$password)"
+        );
+>>>>>>> Stashed changes
     }
     
 }

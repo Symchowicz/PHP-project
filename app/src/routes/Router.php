@@ -3,6 +3,7 @@ namespace App\routes;
 
 use App\controllers\FrontController;
 use App\controllers\ErrorController;
+use App\controllers\SecurityController;
 
 use DOMDocument;
 

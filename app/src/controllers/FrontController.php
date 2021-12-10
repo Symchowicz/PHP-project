@@ -26,6 +26,7 @@
 
         public function executePostById()
         {
+<<<<<<< Updated upstream
             $manager1= new PostManager(PDOFactory::getMysqlConnection());
             $manager2= new CommentManager(PDOFactory::getMysqlConnection());
             $manager3= new UserManager(PDOFactory::getMysqlConnection());
@@ -35,6 +36,14 @@
             //$data3 = $manager3->getUserByPostId($id);
 
             return $this->render("'Post numéro'+$id", ['posts' => $data1, 'comments' => $data2, 'userPost' => $data3], 'post');
+=======
+            $manager = new PostManager(PDOFactory::getMysqlConnection());
+            $data = $manager->getPostById(1);
+
+            /* echo($data); */
+
+            return $this->render('Post numéro 1', $data, 'post');
+>>>>>>> Stashed changes
         }
 
         public function executeCreatePost()
